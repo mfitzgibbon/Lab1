@@ -81,7 +81,8 @@ namespace Test_Average
                 double averageScore;           // To hold the average score
                 StreamReader inputFile;        // For file input
 
-                // TODO:  declare a variable, scores, that will store 5 integers
+                // declare a variable, scores, that will store 5 integers
+                int[] scores = new int[5];
 
                 // Open the file and get a StreamReader object.
                 inputFile = File.OpenText("TestScores.txt");
@@ -92,6 +93,9 @@ namespace Test_Average
                     // TODO:  read a line from the file, convert to int put in score 
                     // put score in the array at the current index
                     // increment the index
+
+
+
                 }
 
                 // Close the file.
