@@ -21,7 +21,9 @@ namespace FutureValue
             InitializeComponent();
         }
 
-        // TODO: Declare the rectangular array and the row index here
+        // Declare the rectangular array and the row index here
+        string[,] rectArray = new string[3,4];
+        int rowIndex = 0;
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
@@ -43,7 +45,13 @@ namespace FutureValue
                     txtFutureValue.Text = futureValue.ToString("c");
                     txtMonthlyInvestment.Focus();
 
-                    // TODO: Add the calculation to the rectangular array here
+                    // Add the calculation to the rectangular array here
+                    rectArray[rowIndex, 0] = monthlyInvestment.ToString("c");
+                    rectArray[rowIndex, 1] = interestRateYearly.ToString("n2");
+                    rectArray[rowIndex, 2] = years.ToString();
+                    rectArray[rowIndex, 3] = futureValue.ToString("c");
+
+                    rowIndex++;
                 }
             }
             catch (Exception ex)
@@ -56,7 +64,16 @@ namespace FutureValue
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            // TODO: Display the rectangular array in a dialog box here
+            string message = "";
+            // Display the rectangular array in a dialog box here
+            foreach(string rectArrayPoint in rectArray)
+            {
+                if(rectArrayPoint != null)
+                message = message + rectArrayPoint + "\n";
+            }
+            message.Trim('\n');
+            MessageBox.Show(message);
+
             this.Close();
         }
 
