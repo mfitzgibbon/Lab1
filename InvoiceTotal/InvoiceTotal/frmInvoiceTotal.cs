@@ -21,7 +21,9 @@ namespace InvoiceTotal
 			InitializeComponent();
 		}
 
-        // TODO: declare class variables for array and list here
+        // Declare class variables for array and list here
+        List<string> stringList = new List<string>();
+        string[,] stringArray = new string[3, 4];
 
         private void btnCalculate_Click(object sender, EventArgs e)
 		{
@@ -55,8 +57,12 @@ namespace InvoiceTotal
                         txtDiscountAmount.Text = discountAmount.ToString();
                         txtTotal.Text = invoiceTotal.ToString();
 
-                        // TODO:  Add invoice total to the array here
-
+                        // Add invoice total to the array here
+                        stringList.Add(subtotal.ToString());
+                        stringArray[stringList.IndexOf(subtotal.ToString()), 0] = subtotal.ToString("c");
+                        stringArray[stringList.IndexOf(subtotal.ToString()), 1] = discountPercent.ToString("n2");
+                        stringArray[stringList.IndexOf(subtotal.ToString()), 2] = discountAmount.ToString("c");
+                        stringArray[stringList.IndexOf(subtotal.ToString()), 3] = invoiceTotal.ToString("c");
                     }
                     else
                     {
@@ -85,6 +91,12 @@ namespace InvoiceTotal
 		private void btnExit_Click(object sender, EventArgs e)
 		{
             // TODO: add code that displays dialog boxes here
+            string message = "";
+
+            foreach (string str in stringArray)
+                if (str != null)
+                    message = message + str + "\n";
+            MessageBox.Show(message);
 
             this.Close();
 		}
