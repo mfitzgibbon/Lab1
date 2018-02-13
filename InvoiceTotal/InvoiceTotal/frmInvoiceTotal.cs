@@ -92,10 +92,19 @@ namespace InvoiceTotal
 		{
             // TODO: add code that displays dialog boxes here
             string message = "";
+            int count = 0;
 
             foreach (string str in stringArray)
                 if (str != null)
+                {
                     message = message + str + "\n";
+                    count++;
+                    if(count == 4)
+                    {
+                        count = 0;
+                        message = message + "\n";
+                    }
+                }
             MessageBox.Show(message);
 
             this.Close();

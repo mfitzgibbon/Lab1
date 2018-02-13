@@ -46,10 +46,18 @@ namespace FutureValue
                     txtMonthlyInvestment.Focus();
 
                     // Add the calculation to the rectangular array here
-                    rectArray[rowIndex, 0] = monthlyInvestment.ToString("c");
-                    rectArray[rowIndex, 1] = interestRateYearly.ToString("n2");
-                    rectArray[rowIndex, 2] = years.ToString();
-                    rectArray[rowIndex, 3] = futureValue.ToString("c");
+                    if (rowIndex < 3)
+                    {
+                        rectArray[rowIndex, 0] = monthlyInvestment.ToString("c");
+                        rectArray[rowIndex, 1] = interestRateYearly.ToString("n2");
+                        rectArray[rowIndex, 2] = years.ToString();
+                        rectArray[rowIndex, 3] = futureValue.ToString("c");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Array can only hold 3 sets of data." +
+                            "\n" + "Please restart the application and try again.");
+                    }
 
                     rowIndex++;
                 }
